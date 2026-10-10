@@ -1,0 +1,794 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>医工与中医药</title><meta name="data-notion-page-icon" content="🌿"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8C%BF%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="1a3f486c-eaf4-8253-96a5-018236994775" class="page sans" data-notion-page-icon="🌿"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🌿"></span></div><h1 class="page-title" dir="auto">医工与中医药</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="a62f486c-eaf4-833f-9884-81a6ed4b16f8" class="" dir="auto">医工与中医药：传统智慧与现代科技的融合共生</h1><h2 id="6a6f486c-eaf4-821b-8c86-018d5fce9c02" class="" dir="auto">引言</h2><p id="eccf486c-eaf4-8399-9eb2-018badffcfc6" class="" dir="auto">中医药是中华民族几千年积淀的智慧结晶，其“整体观”“辨证论治”“治未病”等理念，在全球健康治理理念中日益凸显价值。而今，在人工智能、生命信息、生物材料、智能制造等工程技术迅猛发展的背景下，中医药迎来了以“医工融合”推动现代化转型的新机遇。</p><p id="f47f486c-eaf4-8202-bd8b-81afca7feb5c" class="" dir="auto">“医工与中医药”的结合，不是简单的工具介入，而是一场深层次的理念互鉴与价值共构。这一融合正在重构传统医学的表达方式、验证路径与服务形态，为打造中国特色智慧医疗体系提供了独特方案。</p><h2 id="9b8f486c-eaf4-839b-a92a-0167a0e89e14" class="" dir="auto">一、传统智慧的现代化表达：中医药的技术转型</h2><h3 id="5b3f486c-eaf4-8322-a5d4-81006a70b4b9" class="" dir="auto">1. 可视化、数据化：让中医“看得见、算得准”</h3><p id="a41f486c-eaf4-825a-b7a2-0140dfb95cd9" class="" dir="auto">传统中医注重望闻问切，但往往缺乏标准化、量化表达。通过红外热成像、舌面识别、脉象传感器等工程手段，可实现对传统诊疗信息的数字捕捉与结构建模，助力中医四诊客观化。</p><blockquote id="d60f486c-eaf4-82d3-b1fc-0195aeb37c63" class="" dir="auto">如舌象AI识别系统、脉诊力学传感模块等，已初步进入基层服务和教学应用，为传统经验医学提供了“看得见”的技术路径【1】。</blockquote><figure id="f64f486c-eaf4-8380-98e3-01a578aabc07" class="image" data-notion-image="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image1.jpeg" dir="ltr"><a href="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image1.jpeg"><img style="width:597px" src="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image1.jpeg"/></a></figure><h1 id="f8df486c-eaf4-83b4-ba11-014039558b0b" class="" dir="auto">图片来源于：<strong>Tongue image quality assessment based on a deep convolutional neural network</strong></h1><h3 id="7b2f486c-eaf4-8206-ba76-81a2ec77d223" class="" dir="auto">2. 智能诊疗辅助：提升辨证施治的科学性</h3><p id="857f486c-eaf4-8245-a40a-01ed34444240" class="" dir="auto">借助人工智能技术，可以建立大数据驱动的中医证候识别与配伍推荐系统，将“辨证论治”的经验与现代算法逻辑融合，支持临床决策科学化、个性化。</p><p id="7def486c-eaf4-8339-88b3-817f58abfd12" class="" dir="auto">国内外已有研究尝试基于深度学习模型进行方剂生成与疾病证型预测，提升了中医诊疗在慢病管理中的适应性与规范性【2】。</p><figure id="733f486c-eaf4-83e5-93a2-81f57380bb1c" class="image" data-notion-image="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image2.jpeg" dir="ltr"><a href="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image2.jpeg"><img style="width:700px" src="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image2.jpeg"/></a></figure><h1 id="ed4f486c-eaf4-837f-964b-810ca988c395" class="" dir="auto">图片来源于：Chen Z, Zhang D, Liu C, et al. <em>Traditional Chinese medicine diagnostic prediction model for holistic syndrome differentiation based on deep learning</em>. <em>Integr Med Res</em>. 2024;13(1):101019.</h1><h3 id="052f486c-eaf4-83ae-b3dd-813ecfc5ac6e" class="" dir="auto">3. 智能制造与新材料：推动中药现代化制剂发展</h3><p id="6faf486c-eaf4-83f8-bd57-0156df9cdea4" class="" dir="auto">从自动煎药机、煎药机器人，到中药贴敷的智能控释系统，工程技术为中药的加工、提取、运输和使用带来全新形态，也极大提升了其产业化与国际传播能力。</p><h2 id="97bf486c-eaf4-8324-a751-8121cf9355aa" class="" dir="auto">二、工程思维对中医药价值体系的延展</h2><p id="bb5f486c-eaf4-8399-baff-0199d347a20d" class="" dir="auto">医工融合不仅是方法革新，更对中医药的价值逻辑产生深远影响：</p><ol type="1" id="9c6f486c-eaf4-8386-8bd1-811efa1cd4a1" class="numbered-list" start="1" dir="auto"><li>整体观与系统工程契合<p id="a4ef486c-eaf4-8395-8182-811a569c76ac" class="" dir="auto">中医讲“整体观”“阴阳平衡”，强调系统调节；工程学中的系统建模、闭环控制与反馈机制，与此高度一致，为中医理论的逻辑化建构提供方法论支持【3】。</p></li></ol><ol type="1" id="ebcf486c-eaf4-831e-ae40-01d8402684eb" class="numbered-list" start="2" dir="auto"><li>个体差异与精准干预互补<p id="8b6f486c-eaf4-83e9-8ea9-0194f3df6636" class="" dir="auto">中医“因人施治”，追求个体化；工程辅助下的数据采集与行为识别能力，可实现动态健康画像，为中医干预提供“精准锚点”【4】。</p></li></ol><ol type="1" id="e58f486c-eaf4-83e9-9312-8115aa01ec76" class="numbered-list" start="3" dir="auto"><li>生命伦理与人文关怀互嵌<p id="cc6f486c-eaf4-8220-9d5f-01e26d956ab4" class="" dir="auto">工程强调效率，中医强调仁心。融合发展需防止“机械化医疗”风险，中医所承载的伦理精神、文化关怀正是对技术盲点的补偿与修正【5】。</p></li></ol><figure id="fcaf486c-eaf4-8319-9122-81348f98388a" class="image" data-notion-image="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image3.jpeg" dir="ltr"><a href="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image3.jpeg"><img style="width:700px" src="%E5%8C%BB%E5%B7%A5%E4%B8%8E%E4%B8%AD%E5%8C%BB%E8%8D%AF/image3.jpeg"/></a></figure><p id="5e0f486c-eaf4-83fe-9e66-010e1024d1bf" class="" dir="auto">图片来源于：Yao Y, Liang H, et al. <em>AI: Bridging Ancient Wisdom and Modern Innovation in Traditional Chinese Medicine</em>. <em>Journal of Medical Internet Research – Medical Informatics</em>, 2024.</p><h2 id="7f4f486c-eaf4-824a-9a63-01d32dcc6a71" class="" dir="auto">三、融合实践路径：让中医“技”有所托、“道”得其彰</h2><h3 id="6d3f486c-eaf4-8302-b5da-013ec64bc8a6" class="" dir="auto">1. 构建中医智能基础设施</h3><p id="d01f486c-eaf4-82ea-9bc2-0113be268952" class="" dir="auto">推动建设“中医+工程”融合平台，如数字中医诊疗系统、AI驱动中医知识图谱、云端中药房，提升中医服务的标准化水平与数字服务能力【4】。</p><h3 id="492f486c-eaf4-8341-8440-816caabfd807" class="" dir="auto">2. 推进中医药研究范式变革</h3><p id="6fff486c-eaf4-8347-9704-013e57828cb8" class="" dir="auto">支持跨学科联合攻关，融合工程建模、模拟仿真、系统生物学等方法，探索中医经典理论（如五行、生理周期）的现代验证与再表达路径【3】。</p><h3 id="79df486c-eaf4-82ea-bea9-014d25135952" class="" dir="auto">3. 打造文化驱动的创新应用场景</h3><p id="4b0f486c-eaf4-8380-9ff5-01e506e1d5f1" class="" dir="auto">在康复中心、养老社区、远程医疗等场景中，融合中医非药物疗法（如艾灸、推拿、导引术）与智能感知、可穿戴设备、VR交互技术，提升健康干预的体验感和传播力【4】。</p><h2 id="f43f486c-eaf4-82a4-8097-81f9b285bcba" class="" dir="auto">四、以文化使命引领技术融合的未来方向</h2><p id="fcef486c-eaf4-8337-8035-81146e98b625" class="" dir="auto">中医药是中华文化的重要载体，任何技术赋能都不应掩盖其文化根基，反而应加以弘扬。未来的医工融合，应坚持技术与文化双向互动：</p><ol type="1" id="029f486c-eaf4-8234-a746-012629f21355" class="numbered-list" start="1" dir="auto"><li>尊重传统：在工程介入中不“工具化”中医药，而是以“理解、对话、融合”的态度推动其系统化表达；</li></ol><ol type="1" id="610f486c-eaf4-8323-988b-811c65095b06" class="numbered-list" start="2" dir="auto"><li>体现中国特色：让“中医智慧+中国制造”走出国门，成为全球健康体系多元化的代表力量；</li></ol><ol type="1" id="f12f486c-eaf4-8396-885b-01e85ca595b7" class="numbered-list" start="3" dir="auto"><li>塑造国际认同：通过科技化提升中医疗效评价、传播方式与产品标准，助力中医药在国际上被“听得懂、用得上、信得过”。</li></ol><h2 id="d17f486c-eaf4-8362-b3ca-01e752c3fc5b" class="" dir="auto">结语：医工与中医药，共筑未来健康文明</h2><p id="9bef486c-eaf4-8353-862c-8158300c6431" class="" dir="auto">医工融合不是对中医药的替代，而是协助其“脱胎换骨”，以现代语言重新表达其深厚智慧。让传统医学在科技之光中焕发活力，是时代赋予我们的责任。</p><p id="97df486c-eaf4-83f0-825f-81bca70d3500" class="" dir="auto">中国医药卫生文化协会将继续致力于推动医工与中医药的融合发展，以文化为魂、以技术为器，共同打造具有中国风格、世界影响的健康文明新范式。</p><h2 id="398f486c-eaf4-832a-a5a9-01028d0b6e8d" class="" dir="auto">参考文献</h2><ol type="1" id="5c4f486c-eaf4-821d-97e8-81c0167d0d9d" class="numbered-list" start="1" dir="auto"><li>Xu, Y., et al. (2021). Automatic tongue diagnosis system based on convolutional neural networks. IEEE Access, 9, 37607–37618.</li></ol><ol type="1" id="748f486c-eaf4-826d-bb7b-810ae8feadeb" class="numbered-list" start="2" dir="auto"><li>Chen Z, Zhang D, Liu C, et al. Traditional Chinese medicine diagnostic prediction model for holistic syndrome differentiation based on deep learning. Integr Med Res. 2024;13(1):101019.</li></ol><ol type="1" id="62af486c-eaf4-83fd-9275-813b5e33cd39" class="numbered-list" start="3" dir="auto"><li>党海霞, 张俊华, 刘保延, 等. 《中医药传承创新健康服务体系的战略研究》. 中国工程科学, 2017, 19(2): 84–87.</li></ol><ol type="1" id="85ff486c-eaf4-827a-8bb2-01ce36ed9095" class="numbered-list" start="4" dir="auto"><li>国家中医药管理局. (2022). 《“十四五”中医药发展规划》.</li></ol><ol type="1" id="5bff486c-eaf4-82f3-b6af-813f6f4c5159" class="numbered-list" start="5" dir="auto"><li>Yao Y, Liang H, et al. AI: Bridging Ancient Wisdom and Modern Innovation in Traditional Chinese Medicine. Journal of Medical Internet Research – Medical Informatics, 2024.</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
