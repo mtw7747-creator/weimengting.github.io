@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "vinext build",
+    "build": "next build",
     "build:next": "next build",
     "start": "next start",
     "sites:dev": "vinext dev",
