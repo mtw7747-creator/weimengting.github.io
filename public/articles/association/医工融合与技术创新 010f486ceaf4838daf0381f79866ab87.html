@@ -1,0 +1,794 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>医工融合与技术创新</title><meta name="data-notion-page-icon" content="🔬"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%94%AC%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="010f486c-eaf4-838d-af03-81f79866ab87" class="page sans" data-notion-page-icon="🔬"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🔬"></span></div><h1 class="page-title" dir="auto">医工融合与技术创新</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="b5df486c-eaf4-82dc-93bb-01ca1a2fd85e" class="" dir="auto">医工融合与技术创新：驱动中国医疗科技迈向智慧新时代</h1><p id="865f486c-eaf4-82f7-a83b-81e6d9dfde4d" class="" dir="auto"><strong>引言</strong></p><p id="6daf486c-eaf4-83f0-8c95-8183efbacdfd" class="" dir="auto">在国家“健康中国”“科技强国”战略的引领下，医学与工程技术的深度融合正成为推动医疗科技创新和提升健康服务质量的核心力量。医工融合不仅带来了技术的突破，更实实在在地改变着医生和患者的诊疗体验，为构建智慧医疗体系注入了新动能。</p><p id="b0df486c-eaf4-82fe-a95f-012cd5aa010e" class="" dir="auto">从智能诊断设备到微创手术机器人，从生物材料到个性化康复装备，创新技术正加速转化为临床应用，推动医疗服务向精准化、智能化和人性化迈进。本篇文章将聚焦医工融合的政策支持、技术进展和临床实践，全面解析其在推动我国医疗科技发展中的关键作用【1】【2】。</p><h2 id="35cf486c-eaf4-82f3-8db4-011000dfa59f" class="" dir="auto">一、政策驱动：构筑医工融合发展的坚实基础</h2><p id="25df486c-eaf4-824a-9af5-81277a992b9c" class="" dir="auto">近年来，国家高度重视医工融合，出台多项政策为创新发展保驾护航：</p><ul id="b79f486c-eaf4-838b-8ddf-8158c0690e41" class="bulleted-list" dir="auto"><li style="list-style-type:disc">《“十四五”国家科技创新规划》明确将医疗装备智能化作为重点突破方向【1】；</li></ul><ul id="052f486c-eaf4-8268-80e8-8169e3200eb4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">《关于全面深化药品医疗器械监管改革促进医药产业高质量发展的意见》（2025）提出要加快国产医疗器械创新和多学科协同攻关，推动医疗器械向高端化、智能化发展【2】；</li></ul><ul id="4f3f486c-eaf4-8396-aa90-01c12016ddf4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">工业和信息化部等十部门联合发布的《“十四五”医疗装备产业发展规划》（2021）进一步强调推进智能医疗装备、关键零部件、核心软件等领域的技术自主可控和产业协同突破【3】。</li></ul><p id="1cff486c-eaf4-8286-b8f2-81aebd6ea30a" class="" dir="auto">这些政策构建起“科研—临床—产业”协同创新生态，为技术攻关和成果转化提供制度保障。以北京某三甲医院为例，依托国家支持建立的医学工程创新中心，已联合企业成功研发出国产智能手术机器人，标志着我国高端医疗装备国产化迈出坚实步伐。</p><h2 id="caff486c-eaf4-8213-ab98-819fbd12c981" class="" dir="auto">二、技术创新：引领医疗器械迈向高质量发展</h2><p id="39bf486c-eaf4-838d-bce1-016d3d369d56" class="" dir="auto">医工融合催生了一系列技术突破，重塑了医疗器械的技术体系和产业格局：</p><ul id="2e0f486c-eaf4-837f-a50c-016ba0450e1c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">智能诊断设备：基于人工智能的影像识别系统大幅提升疾病早筛效率，如肺结节智能检测帮助医生提高肺癌早期发现率【4】；</li></ul><ul id="d95f486c-eaf4-831a-ade1-012780356f36" class="bulleted-list" dir="auto"><li style="list-style-type:disc">微创与机器人手术平台：高精度导航与机器人辅助技术使手术更精准、安全，减少患者创伤与恢复时间【5】；</li></ul><ul id="064f486c-eaf4-83d5-a034-013e63502353" class="bulleted-list" dir="auto"><li style="list-style-type:disc">先进生物材料与仿生技术：新型可降解支架与组织工程支架技术基于模拟细胞外基质已经广泛应用于再生医学【6a】；同时，EEG/fNIRS 驱动的智能仿生假肢已实现神经互动控制，为患者康复带来质的飞跃【6b】。</li></ul><ul id="f8df486c-eaf4-826e-82df-01c07d4cad3a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">家庭健康科技：便携式POCT设备和远程监测系统助力慢病管理，推动分级诊疗体系建设【7】。<figure id="f42f486c-eaf4-8299-85fe-815cd62d76f3" class="image" data-notion-image="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image1.png" dir="ltr"><a href="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image1.png"><img style="width:700px" src="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image1.png"/></a></figure></li></ul><p id="e8ff486c-eaf4-8342-aa6a-814721e4ff3c" class="" dir="auto">（基于 EEG 的假肢控制框图）图片来源于：AlQahtani NJ, Al‑Naib I, Althobaiti M. <em>Recent progress on smart lower prosthetic limbs: integration of EEG/fNIRS in rehabilitation.</em> <em>Front Bioeng Biotechnol</em>. 2024;12:1454262.</p><p id="a33f486c-eaf4-82b3-9060-81a8276cf070" class="" dir="auto">技术创新不仅提升了临床效率，也催生了医疗产业新动能。例如，广州一家创新企业结合仿生材料和智能传感技术，成功开发出适合老年人个性化康复的智能义肢，市场反响热烈。</p><h2 id="439f486c-eaf4-833b-be4b-01e5ec377504" class="" dir="auto">三、临床实践：多方协同推动创新成果落地</h2><p id="28ff486c-eaf4-83ed-8dad-01183c3b8a31" class="" dir="auto">医工融合的价值最终体现在临床应用和患者受益上。医院、科研机构、企业之间的协同创新日益紧密：</p><ul id="7a9f486c-eaf4-8251-bc31-813130fb607f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">医院作为临床需求的“发起者”，推动医学工程中心建设，促进创新技术的临床验证【8】；</li></ul><ul id="141f486c-eaf4-83c9-895b-81cb36365978" class="bulleted-list" dir="auto"><li style="list-style-type:disc">工程技术人员深入多学科团队，参与设备设计与功能优化，确保技术满足临床真实需求【8】；</li></ul><ul id="272f486c-eaf4-8228-8ac4-01bcd6a323d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">企业与科研机构共建共享平台，加速研发转化，形成“产学研医金”一体化创新链【9】。</li></ul><figure id="bd5f486c-eaf4-83fe-aa0e-016c562f0bc4" class="image" data-notion-image="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image2.jpeg" dir="ltr"><a href="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image2.jpeg"><img style="width:700px" src="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image2.jpeg"/></a></figure><p id="df3f486c-eaf4-83f8-84b6-01951e7b441a" class="" dir="auto">图片来源： 北大第三医院</p><p id="2b1f486c-eaf4-8243-a255-8136e3edcbfd" class="" dir="auto">这一协同机制有效缩短了技术从实验室到病床的路径，使创新产品更快惠及患者。以上海某医疗机构为例，其与高校合作研发的智能手术导航系统，已在多家三甲医院成功应用，显著提升了复杂手术的成功率。</p><h2 id="5caf486c-eaf4-8228-86ef-814ca6b49456" class="" dir="auto">四、挑战与展望：构建可持续发展的创新生态</h2><p id="44df486c-eaf4-831f-8645-01b990b6c606" class="" dir="auto">尽管我国医工融合取得显著成效，但仍面临基础研究薄弱、成果转化效率不高、标准体系尚不完善等挑战。未来建议：</p><ul id="d73f486c-eaf4-83c1-9f4f-81c880ac2f3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">加强顶层设计，设立专项基金支持医工融合长远发展【10】；</li></ul><ul id="bfff486c-eaf4-82ab-8839-81c0867fadc5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">完善注册审批和监管体系，规范新兴技术产品上市流程【10】；</li></ul><ul id="3d2f486c-eaf4-8289-8fd6-015a4ce3a999" class="bulleted-list" dir="auto"><li style="list-style-type:disc">培育跨学科复合型人才，促进医学与工程的深度融合【11】；</li></ul><ul id="7ccf486c-eaf4-826b-962b-01d8024627fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">推动多方资源共享，打造高效协同的创新生态，是突破医工融合瓶颈的关键。以“医工融合智能康复医疗设备关键技术工程研究中心”在山东省济宁医学院为例，该中心依托省级工程研究平台，联合高校、医疗机构和企业，形成“政—产—学—研—用”协同创新架构，实现了医疗装备关键技术成果的高效转化【12】。</li></ul><p id="629f486c-eaf4-8368-b37f-81fb2081afc2" class="" dir="auto">通过这些举措，医工融合必将更好地服务于健康中国建设，推动医疗科技迈向高质量发展新时代。</p><figure id="dd4f486c-eaf4-8249-8171-81c1018c0aef" class="image" data-notion-image="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image3.jpeg" dir="ltr"><a href="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image3.jpeg"><img style="width:700px" src="%E5%8C%BB%E5%B7%A5%E8%9E%8D%E5%90%88%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%88%9B%E6%96%B0/image3.jpeg"/></a></figure><h2 id="28df486c-eaf4-83e5-a51c-019044f56615" class="" dir="auto">图片来源于：中国教育在线</h2><h2 id="8f9f486c-eaf4-822c-9055-81e7ba834b81" class="" dir="auto">结语</h2><p id="82bf486c-eaf4-82bb-95aa-81ce6fe98fe4" class="" dir="auto">医工融合不仅是技术的叠加，更是医疗健康服务模式的深刻变革。它以创新为动力，聚焦人民健康需求，将工程智慧与医学实践有机结合，助力打造智慧医疗新格局。未来，中国医药卫生文化协会将继续汇聚多方力量，推动技术、制度和文化协同发展，赋能我国医疗科技创新，助力健康中国战略实现。</p><h3 id="f18f486c-eaf4-82c0-984d-81f59a5dbb58" class="" dir="auto">参考文献</h3><p id="c79f486c-eaf4-82af-b9cf-819a1afe1515" class="" dir="auto">【1】工业和信息化部等十部门. 《“十四五”医疗装备产业发展规划》. 2021年12月21日。</p><p id="cd6f486c-eaf4-8335-b6f1-81044e7a4909" class="" dir="auto">【2】国务院办公厅. 《关于全面深化药品医疗器械监管改革促进医药产业高质量发展的意见》. 2025年1月3日。</p><p id="af6f486c-eaf4-8320-83c6-816bd85095d7" class="" dir="auto">【3】工业和信息化部等十部门. 《“十四五”医疗装备产业发展规划》. 2021年12月21日。</p><p id="147f486c-eaf4-82e4-8620-015e93366e54" class="" dir="auto">【4】Ardila, D., et al. (2019). End-to-end lung cancer screening with three-dimensional deep learning on low-dose chest computed tomography. Nature Medicine, 25(6), 954–961.</p><p id="9cdf486c-eaf4-83aa-9eff-81dfe63d376d" class="" dir="auto">【5】Intuitive Surgical. (2023). <em>da Vinci Surgical System Clinical Evidence Summary</em>.</p><p id="c8ef486c-eaf4-8394-88b3-8178764f5444" class="" dir="auto">【6a】Heid S, Laumen S, Heiss C, et al. <em>Development of scaffolds from bio‑based natural materials for tissue regeneration applications.</em> <em>Int J Mol Sci</em>. 2023;24(1):203.</p><p id="f5df486c-eaf4-83b7-9da1-01dcbd07c3b9" class="" dir="auto">【6b】AlQahtani NJ, Al‑Naib I, Althobaiti M. <em>Recent progress on smart lower prosthetic limbs: integration of EEG/fNIRS in rehabilitation.</em> <em>Front Bioeng Biotechnol</em>. 2024;12:1454262.</p><p id="53cf486c-eaf4-827d-8732-81e3dff4c7ac" class="" dir="auto">【7】国家卫健委等.《“十四五”健康中国行动规划》2021年</p><p id="ae2f486c-eaf4-831e-9819-01d93416aef9" class="" dir="auto">【8】关于医院与创新临床验证与跨学科协作的支撑实例：</p><blockquote id="4b4f486c-eaf4-82a5-8cd9-8107dec8a165" class="" dir="auto">北京大学第三医院举办的“医工融合，科创赋能”论坛，通过医院科技成果转化办公室联合高校、企业、科技平台共建合作，重点推动临床需求对接新技术验证和迭代</blockquote><p id="123f486c-eaf4-834b-a5cf-8167dc6df58c" class="" dir="auto"><strong>【9】</strong>关于产学研医金平台建设实例：</p><blockquote id="2f8f486c-eaf4-8214-b254-81efb854fccb" class="" dir="auto">北京亦庄汇龙森科技园已配备产学研医用公共服务平台，联动医院、研究院所、科技园区和企业，共同推动科技成果特别是医疗器械和生物医药产品的转化落地</blockquote><p id="445f486c-eaf4-8200-8728-8163e872863a" class="" dir="auto"><strong>【10】</strong> 国家层面新医科建设支持政策</p><p id="270f486c-eaf4-82c5-a7e1-01994058275b" class="" dir="auto">教育部、卫健委及中医药管理局联合推动“医学+X”新医科教育，明确提出顶层统筹设计、交叉学科建设和产学合作机制，以系统促进医学与工程、技术、文化的深度融合</p><p id="86ef486c-eaf4-82d2-8d9b-01113388abe7" class="" dir="auto"><strong>【11】</strong> 江苏徐州医科大学“医理工”交叉培养模式</p><p id="6c1f486c-eaf4-8230-b775-01ffd268baf3" class="" dir="auto">徐州医科大学医学影像学院以“精准影像与智慧影像”为中心，开展校医企联合、跨学科多元合作，拓展工程与医学交叉，培养具备临床与工程综合能力的复合型人才</p><p id="25df486c-eaf4-836f-afb8-013982ea8ad0" class="" dir="auto"><strong>【12】</strong>济宁医学院“医工融合智能康复医疗设备关键技术山东省工程研究中心”于2024年启动，通过省级工程研究平台实现“政产学研用”协同合作机制</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

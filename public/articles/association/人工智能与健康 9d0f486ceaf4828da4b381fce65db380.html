@@ -1,0 +1,794 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>人工智能与健康</title><meta name="data-notion-page-icon" content="💊"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%92%8A%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="9d0f486c-eaf4-828d-a4b3-81fce65db380" class="page sans" data-notion-page-icon="💊"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="💊"></span></div><h1 class="page-title" dir="auto">人工智能与健康</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="e7cf486c-eaf4-8365-9597-810bff313f16" class="" dir="auto">人工智能与健康：从治疗走向预防的新引擎</h1><p id="549f486c-eaf4-827c-8ab2-81551aeac957" class="" dir="auto">——AI从临床走向社区，为全民健康筑起“前哨”</p><h3 id="9e9f486c-eaf4-837b-befa-014b11ba1da8" class="" dir="auto">引言</h3><p id="a95f486c-eaf4-83e2-ab4f-81f9a093afe4" class="" dir="auto">随着医疗技术和信息技术的深度融合，人工智能（AI）不仅在临床诊疗中发挥重要作用，更正加速向公共健康和慢性病管理等“治未病”环节延伸。面对人口老龄化与慢病负担加重的双重挑战，AI正成为提升公共卫生应急能力、强化慢病管理和实现健康全生命周期管理的关键引擎【1】。</p><p id="282f486c-eaf4-82c7-bd0e-01fdbe06c34b" class="" dir="auto">“健康中国2030”战略明确提出“预防为主”，强调构建全民健康防护网【2】；“十四五”数字经济发展规划进一步提出建设智慧健康养老新服务体系【3】。在此背景下，人工智能为公共健康服务模式注入了前所未有的精度与广度。</p><p id="46ff486c-eaf4-82ee-b27c-814dacff65e6" class="" dir="auto">中国医药卫生文化协会积极推动人工智能在公共健康领域的规范应用与文化转化，助力构建全民健康、主动健康、智慧健康的现代公共卫生体系。</p><h3 id="0f0f486c-eaf4-82e4-9b38-017aaf92f6cc" class="" dir="auto">一、人工智能赋能公共健康治理</h3><ol type="1" id="a57f486c-eaf4-83a4-a3dd-816001fba499" class="numbered-list" start="1" dir="auto"><li>疾病监测与预警：从被动响应到主动识别<p id="e12f486c-eaf4-82a3-b455-01ad6a0fd281" class="" dir="auto">AI基于多源数据融合技术和机器学习模型，可对传染病、慢性病等公共卫生风险实现动态监测和智能预测【4】。以新冠疫情为例，AI在病例走势预测、传播路径模拟、公共政策效果评估等方面，显著提升了防控效率与科学性【5】。</p><figure id="5e4f486c-eaf4-8273-a91b-816540fa475f" class="image" data-notion-image="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image1.jpeg" dir="ltr"><a href="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image1.jpeg"><img style="width:700px" src="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image1.jpeg"/></a></figure><p id="84bf486c-eaf4-82ae-a88b-81d1315eedd4" class="" dir="auto">图片来源于：AI‑powered COVID‑19 forecasting: a comprehensive comparison of deep‑learning models. Osong Public Health Res Perspect, 2024.</p></li></ol><ol type="1" id="f11f486c-eaf4-8390-b554-8147d4efa865" class="numbered-list" start="2" dir="auto"><li>健康行为分析与干预：精准感知，及时干预<p id="865f486c-eaf4-826d-943b-01dad9b0858e" class="" dir="auto">通过穿戴设备、移动终端、健康App采集居民行为与生理数据，AI可识别个体健康风险模式，提供个性化干预建议，如控盐减糖、戒烟限酒、运动计划等，形成“智能健康促进”闭环【6】。</p></li></ol><figure id="cdaf486c-eaf4-82da-8df5-01a4039edf92" class="image" data-notion-image="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image2.png" dir="ltr"><a href="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image2.png"><img style="width:700px" src="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image2.png"/></a></figure><p id="900f486c-eaf4-83ab-b3f5-01338510a49e" class="" dir="auto">图片来源于：Choi J‑H, Lee M‑K, Kim S. The emergence of AI‑based wearable sensors for digital health: A comprehensive review. Sensors, 2024.</p><ol type="1" id="deaf486c-eaf4-8221-b66c-01c1a49cd2aa" class="numbered-list" start="1" dir="auto"><li>卫生资源优化配置：让公共服务更公平高效</li></ol><p id="f8ef486c-eaf4-8201-89e9-81e6df3c6c40" class="" dir="auto">AI可辅助政府和卫生机构进行健康服务供需预测、区域卫生资源调配与优先级排序，实现“科学规划—智能决策—动态评估”的服务闭环，特别在COVID-19疫情期间提升了资源分配效率和公平性[7]。</p><h3 id="decf486c-eaf4-82b7-9d6a-81e1708451ec" class="" dir="auto">二、人工智能助力慢性病管理与健康促进</h3><ol type="1" id="447f486c-eaf4-8241-a19d-811c70ab531c" class="numbered-list" start="1" dir="auto"><li>AI结合健康档案、基因组信息、生活行为数据等，能为糖尿病、高血压、心血管疾病等患者生成“千人千策”的个体化慢病管理方案。例如，AI算法通过分析服药依从性、饮食、运动等变量，利用强化学习和大数据驱动策略，实现动态优化管理[8,9]。</li></ol><ol type="1" id="7dff486c-eaf4-836b-b75d-01a7a04f7b6f" class="numbered-list" start="2" dir="auto"><li>远程监测与智能随访：提升患者主动性<p id="4bdf486c-eaf4-827b-86fe-813a69a7f8a7" class="" dir="auto">AI结合物联网平台与5G技术，已广泛用于慢病患者的居家监测、异常数据识别与自动预警。研究表明，这类AI+IoT系统研究显示可显著降低了急诊发生率，提高了患者生活质量【10】。</p></li></ol><ol type="1" id="659f486c-eaf4-830c-9a2c-814d2caa3eb4" class="numbered-list" start="3" dir="auto"><li>健康教育与行为引导：智能陪伴，文化润养<p id="32cf486c-eaf4-8387-86cc-81a84fc9f322" class="" dir="auto">基于大模型能力的虚拟健康助理、对话式AI、个性化推送系统，使健康教育从单向传达走向“可交互、可适配”的智慧传播，尤其适用于青少年、老年人等群体的长期健康行为建设【11】。</p></li></ol><ol type="1" id="ac9f486c-eaf4-8237-8b75-0104bc9583af" class="numbered-list" start="4" dir="auto"><li><strong>面向未来的AI公共健康发展方向</strong></li></ol><ol type="1" id="cb2f486c-eaf4-8352-bd62-016a64f4914c" class="numbered-list" start="5" dir="auto"><li>数据安全与隐私保护<p id="ef2f486c-eaf4-838d-bcba-81e9c6c3e986" class="" dir="auto">AI系统需在合法、合规、安全框架下运作。目前，国家正加快推动《中华人民共和国个人信息保护法》《国家健康医疗大数据标准、安全和服务管理办法（试行）》等法规实施，为公共健康AI系统建立清晰的伦理、隐私与法律边界[12]。</p></li></ol><ol type="1" id="3def486c-eaf4-83c9-b2b5-81a6dc006977" class="numbered-list" start="6" dir="auto"><li>跨部门协同机制<p id="64cf486c-eaf4-82bf-a42b-81d9b4a3178e" class="" dir="auto">公共健康AI需打破“卫生-科技-产业”信息孤岛，构建“全周期数据共享、全过程协同治理”的机制框架。国家卫健委、工信部、教育部等部门已在多地启动联合试点。</p></li></ol><ol type="1" id="939f486c-eaf4-8283-8824-810ed355737e" class="numbered-list" start="7" dir="auto"><li>标准体系建设<p id="b91f486c-eaf4-823d-b2a8-01764d249d21" class="" dir="auto">包括算法透明性评估、AI产品准入、持续监测与更新机制在内的标准规范体系，正在成为构建健康中国的“技术底座”。2024 年新版《国家人工智能产业综合标准化体系建设指南》由工信部等四部门发布，同时《人工智能伦理治理标准化指南（2023）》由信标委发布，为医疗AI提出安全、可解释、持续监管等要求[13]。</p><figure id="ee1f486c-eaf4-83f1-8b06-81581b1a2493" class="image" data-notion-image="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image3.png" dir="ltr"><a href="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image3.png"><img style="width:700px" src="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7/image3.png"/></a></figure><p id="25cf486c-eaf4-8221-b164-011d1cc26af9" class="" dir="auto">图片来源于：《国家人工智能产业综合标准化体系建设指南》（2024版）。工信部等四部门. 2024年6月5日。</p></li></ol><ol type="1" id="2f5f486c-eaf4-827d-9c64-81ea91000036" class="numbered-list" start="8" dir="auto"><li>公平普惠的技术下沉<p id="563f486c-eaf4-83cf-905c-8122b6510304" class="" dir="auto">AI不应成为健康鸿沟的加剧者，而应成为“医疗公平”的技术催化剂。通过推动云计算平台与智能设备下沉乡村、边远地区，实现“数字共富”，是未来关键方向【14】。</p></li></ol><h3 id="836f486c-eaf4-83ee-8b03-0177b33e84d1" class="" dir="auto">结语：科技预见，护佑全民健康未来</h3><p id="5b3f486c-eaf4-83ca-b1fc-81e218171324" class="" dir="auto">人工智能正从医院走向社区，从治疗走向预防，从人群走向个体。它不仅是公共卫生的“智慧眼睛”，更是实现“全人群、全生命周期、全场景”健康守护的战略力量。</p><p id="a84f486c-eaf4-82d2-8b76-81dcb99c9f18" class="" dir="auto">中国医药卫生文化协会将继续汇聚医、工、技、文等多元资源，推动人工智能在疾病预防、健康促进、基层服务等方面的深入应用，助力打造共建共享的数字健康新图景。</p><h3 id="0c5f486c-eaf4-826d-8164-81f1e53a78fa" class="" dir="auto">参考文献</h3><ol type="1" id="2adf486c-eaf4-83bb-9349-818596501774" class="numbered-list" start="1" dir="auto"><li>Topol E. High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine, 2019.</li></ol><ol type="1" id="d09f486c-eaf4-8200-8140-814873a0770b" class="numbered-list" start="2" dir="auto"><li>国务院. “健康中国2030”规划纲要. 2016.</li></ol><ol type="1" id="8d5f486c-eaf4-82ed-8c27-81642dda0276" class="numbered-list" start="3" dir="auto"><li>国家发展改革委. “十四五”数字经济发展规划.</li></ol><ol type="1" id="6bef486c-eaf4-8248-8201-816542081d6f" class="numbered-list" start="4" dir="auto"><li>ECDC. Digital technologies for infectious disease surveillance, prevention and control. 2021.</li></ol><ol type="1" id="b52f486c-eaf4-8277-bb04-8183a218c44a" class="numbered-list" start="5" dir="auto"><li>AI‑powered COVID‑19 forecasting: a comprehensive comparison of deep‑learning models. Osong Public Health Res Perspect, 2024.</li></ol><ol type="1" id="8bbf486c-eaf4-82bb-8986-81bac1a25951" class="numbered-list" start="6" dir="auto"><li>Choi J‑H, Lee M‑K, Kim S. The emergence of AI‑based wearable sensors for digital health: A comprehensive review. Sensors, 2024.</li></ol><ol type="1" id="a3af486c-eaf4-8217-aedc-81a1fc8b3600" class="numbered-list" start="7" dir="auto"><li>Wu H, Lu X, Wang H. The Application of Artificial Intelligence in Health Care Resource Allocation Before and During the COVID‑19 Pandemic: A Scoping Review. JMIR AI, 2023;2:e38397.</li></ol><ol type="1" id="eb9f486c-eaf4-822c-bad4-81c87ba29352" class="numbered-list" start="8" dir="auto"><li>Zheng H, Ryzhov IO, et al. Personalized Multimorbidity Management for Patients with Type 2 Diabetes Using Reinforcement Learning of Electronic Health Records. arXiv, 2020.</li></ol><ol type="1" id="371f486c-eaf4-821b-8330-81c76395acb8" class="numbered-list" start="9" dir="auto"><li>Chen M, Ma Y, Li Y, Wu D, Zhang Y. Artificial Intelligence for Healthcare: A Review. IEEE Access, 2020.</li></ol><ol type="1" id="fe4f486c-eaf4-8391-b96d-817c4c4c5df0" class="numbered-list numbered-list-digits-2" start="10" dir="auto"><li>Oladele OO et al. IoT and AI-Based Remote Patient Monitoring for Chronic Disease Management. 2024.</li></ol><ol type="1" id="807f486c-eaf4-835a-b8ba-817e223d9715" class="numbered-list numbered-list-digits-2" start="11" dir="auto"><li>Wu et al. Artificial Intelligence-Based Conversational Agents for Chronic Disease Management. JMIR, 2020.</li></ol><ol type="1" id="d2cf486c-eaf4-8359-959a-01209f070dac" class="numbered-list numbered-list-digits-2" start="12" dir="auto"><li>国家卫生健康委《国家健康医疗大数据标准、安全和服务管理办法（试行）》强调健康医疗大数据需遵循标准化、存储、隐私保护等原则，并明确医疗数据必须存储在境内、同意机制、等级保护要求等</li></ol><ol type="1" id="dcaf486c-eaf4-8293-a5e7-01b841689c51" class="numbered-list numbered-list-digits-2" start="13" dir="auto"><li>《国家人工智能产业综合标准化体系建设指南》（2024版）。工信部等四部门. 2024年6月5日。</li></ol><ol type="1" id="982f486c-eaf4-839b-b465-0178bf6c3006" class="numbered-list numbered-list-digits-2" start="14" dir="auto"><li>国家发展改革委. 关于推进“数字乡村”建设的指导意见. 2022年.</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
