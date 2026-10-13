@@ -1534,7 +1534,7 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        src: '/media/light-mv-teaser.mp4',
+        src: '/media/light-mv-full-web.mp4',
         type: 'video',
         poster: '/media/light-mv-cover.png',
         alt: '请你像光一样平凡地活着完整 AIGC MV',
@@ -1682,7 +1682,7 @@ export const homeShowcaseItems: HomeShowcaseItem[] = [
     label: '数字人口播',
   }),
   showcaseItem('aigc-story-experiment', {
-    src: '/media/light-mv-teaser.mp4',
+    src: '/media/light-mv-full-web.mp4',
     type: 'video',
     poster: '/media/light-mv-cover.png',
     label: 'AIGC 叙事 MV',
@@ -1730,7 +1730,7 @@ export const videoShowcaseItems: HomeShowcaseItem[] = [
     label: 'AI 指令样片',
   }),
   showcaseItem('aigc-story-experiment', {
-    src: '/media/light-mv-teaser.mp4',
+    src: '/media/light-mv-full-web.mp4',
     type: 'video',
     poster: '/media/light-mv-cover.png',
     label: 'AIGC 叙事 MV',
