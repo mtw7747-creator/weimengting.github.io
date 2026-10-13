@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { createPortal } from 'react-dom';
+import { createPortal, flushSync } from 'react-dom';
 
 export function ShowcasePreview({ src, type, poster, title, projectSlug, className, tabIndex, children }: {
   src: string;
@@ -18,6 +18,19 @@ export function ShowcasePreview({ src, type, poster, title, projectSlug, classNa
   const trigger = useRef<HTMLButtonElement>(null);
   const video = useRef<HTMLVideoElement>(null);
 
+  const openPreview = () => {
+    // Mount and start loading in the actual user click, not a later effect.
+    flushSync(() => setOpen(true));
+    dialog.current?.showModal();
+    const player = video.current;
+    if (player) {
+      player.load();
+      player.play().catch(() => {
+        // Native controls remain available if the browser rejects autoplay.
+      });
+    }
+  };
+
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
@@ -27,11 +40,14 @@ export function ShowcasePreview({ src, type, poster, title, projectSlug, classNa
     document.querySelectorAll<HTMLVideoElement>('video').forEach((player) => {
       if (!dialog.current?.contains(player)) player.pause();
     });
-    dialog.current?.showModal();
     const activeVideo = video.current;
-    activeVideo?.play().catch(() => {});
     return () => {
       activeVideo?.pause();
+      if (activeVideo && !activeVideo.isConnected) {
+        activeVideo.removeAttribute('src');
+        activeVideo.querySelectorAll('source').forEach((source) => source.removeAttribute('src'));
+        activeVideo.load();
+      }
       document.body.style.overflow = previousOverflow;
       document.body.classList.remove('showcase-preview-open');
       trigger.current?.focus({ preventScroll: true });
@@ -42,7 +58,7 @@ export function ShowcasePreview({ src, type, poster, title, projectSlug, classNa
     <div className={className}>
       <button ref={trigger} type="button" className="showcase-preview-trigger" tabIndex={tabIndex}
         aria-haspopup="dialog" aria-label={`${type === 'video' ? '播放' : '放大查看'}：${title}`}
-        onClick={() => setOpen(true)}>{children}</button>
+        onClick={openPreview}>{children}</button>
       <a className="showcase-case-link" tabIndex={tabIndex} href={`/work/${projectSlug}`}>查看详细案例 ↗</a>
     </div>
     {open && createPortal(
@@ -52,7 +68,9 @@ export function ShowcasePreview({ src, type, poster, title, projectSlug, classNa
         <div className="showcase-preview-panel">
           <header><h2>{title}</h2><button type="button" autoFocus onClick={() => setOpen(false)}>关闭，返回列表 ×</button></header>
           {type === 'video'
-            ? <video ref={video} src={src} poster={poster} controls autoPlay playsInline preload="metadata" />
+            ? <video ref={video} poster={poster} controls playsInline preload="auto">
+                <source src={src} type="video/mp4" />
+              </video>
             : <img src={src} alt={title} />}
           <footer><a href={`/work/${projectSlug}`}>查看详细案例 ↗</a><button type="button" onClick={() => setOpen(false)}>返回列表，继续浏览</button></footer>
         </div>
