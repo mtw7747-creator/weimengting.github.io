@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { FadeIn } from '@/components/fade-in';
 import { ProjectTile } from '@/components/project-tile';
+import { ShowcasePreview } from '@/components/showcase-preview';
 import { getPublishedContent } from '@/lib/portfolio-store';
 
 const heroTags = ['内容定位', '增长转化', 'AI 提效'];
@@ -69,8 +70,8 @@ export default async function Home() {
                 key={duplicate ? 'duplicate' : 'primary'}
               >
                 {homeShowcaseItems.map((item, index) => (
-                  <a
-                    href={`/work/${item.projectSlug}`}
+                  <ShowcasePreview
+                    src={item.src} type={item.type} poster={item.poster} title={item.title} projectSlug={item.projectSlug}
                     className="home-project-cover-v11"
                     tabIndex={duplicate ? -1 : undefined}
                     key={`${duplicate ? 'duplicate' : 'primary'}-${item.projectSlug}-${item.src}`}
@@ -103,7 +104,7 @@ export default async function Home() {
                       <strong>{item.title}</strong>
                       <small>{item.metric}</small>
                     </div>
-                  </a>
+                  </ShowcasePreview>
                 ))}
               </div>
             ))}
@@ -122,7 +123,7 @@ export default async function Home() {
 
         <div className="home-video-grid">
           {videoShowcaseItems.map((item, index) => (
-            <a href={`/work/${item.projectSlug}`} className="home-video-card" key={item.projectSlug}>
+            <ShowcasePreview src={item.src} type={item.type} poster={item.poster} title={item.title} projectSlug={item.projectSlug} className="home-video-card" key={item.projectSlug}>
               <div className="home-video-card-media">
                 {item.type === 'video' ? (
                   <video
@@ -148,7 +149,7 @@ export default async function Home() {
                 </div>
                 <small>{item.year} · {item.metric}</small>
               </div>
-            </a>
+            </ShowcasePreview>
           ))}
         </div>
       </section>
