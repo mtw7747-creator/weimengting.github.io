@@ -12,6 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function WorkPage() {
   const { projects, projectTracks } = await getPublishedContent();
+  const archiveProjects = projects.filter((project) => project.slug !== 'ai-operations-automation-suite');
 
   return (
     <main>
@@ -26,7 +27,7 @@ export default async function WorkPage() {
         </div>
 
         <div className="library-note">
-          {projects.length} PROJECTS / 2023—2026 / {projectTracks.length} TRACKS
+          {archiveProjects.length} PROJECTS / 2023—2026 / {projectTracks.length} TRACKS
         </div>
       </section>
 
@@ -39,7 +40,7 @@ export default async function WorkPage() {
         </nav>
 
         {projectTracks.map((track) => {
-          const trackProjects = projects
+          const trackProjects = archiveProjects
             .filter((project) => project.track === track.id)
             .sort((a, b) => {
               const order = projectArchiveOrder[track.id] ?? [];
