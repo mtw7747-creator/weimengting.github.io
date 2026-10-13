@@ -1,5 +1,4 @@
 /* oxlint-disable next/no-html-link-for-pages -- Full document navigation is intentional on the hosted runtime. */
-/* oxlint-disable jsx-a11y/media-has-caption -- Homepage videos are muted decorative project previews. */
 import Image from 'next/image';
 import { FadeIn } from '@/components/fade-in';
 import { ProjectTile } from '@/components/project-tile';
@@ -77,21 +76,9 @@ export default async function Home() {
                     key={`${duplicate ? 'duplicate' : 'primary'}-${item.projectSlug}-${item.src}`}
                   >
                     <div className="home-project-cover-media-v11">
-                      {item.type === 'video' ? (
-                        <video
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
-                          poster={item.poster}
-                          aria-label={duplicate ? undefined : `${item.title}视频预览`}
-                        >
-                          <source src={item.src} type="video/mp4" />
-                        </video>
-                      ) : (
+                      {(item.type !== 'video' || item.poster) && (
                         <Image
-                          src={item.src}
+                          src={item.type === 'video' ? item.poster! : item.src}
                           alt={duplicate ? '' : item.title}
                           fill
                           sizes="(max-width: 760px) 43vw, 220px"
@@ -125,20 +112,8 @@ export default async function Home() {
           {videoShowcaseItems.map((item, index) => (
             <ShowcasePreview src={item.src} type={item.type} poster={item.poster} title={item.title} projectSlug={item.projectSlug} className="home-video-card" key={item.projectSlug}>
               <div className="home-video-card-media">
-                {item.type === 'video' ? (
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster={item.poster}
-                    aria-label={`${item.title}视频预览`}
-                  >
-                    <source src={item.src} type="video/mp4" />
-                  </video>
-                ) : (
-                  <Image src={item.src} alt={item.title} fill sizes="(max-width: 760px) 100vw, 33vw" />
+                {(item.type !== 'video' || item.poster) && (
+                  <Image src={item.type === 'video' ? item.poster! : item.src} alt={item.title} fill sizes="(max-width: 760px) 100vw, 33vw" />
                 )}
                 <span>{String(index + 1).padStart(2, '0')} / {item.type === 'video' ? 'PLAY' : 'VIEW'}</span>
               </div>

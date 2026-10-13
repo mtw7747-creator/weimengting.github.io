@@ -23,10 +23,15 @@ export function ShowcasePreview({ src, type, poster, title, projectSlug, classNa
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     document.body.classList.add('showcase-preview-open');
+    // Only the active dialog may play; leave background players paused on close.
+    document.querySelectorAll<HTMLVideoElement>('video').forEach((player) => {
+      if (!dialog.current?.contains(player)) player.pause();
+    });
     dialog.current?.showModal();
-    video.current?.play().catch(() => {});
+    const activeVideo = video.current;
+    activeVideo?.play().catch(() => {});
     return () => {
-      video.current?.pause();
+      activeVideo?.pause();
       document.body.style.overflow = previousOverflow;
       document.body.classList.remove('showcase-preview-open');
       trigger.current?.focus({ preventScroll: true });
