@@ -29,15 +29,40 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--muted);
-  font-size: 11px;
+  color: #102010;
+  background: linear-gradient(120deg, #d7ff38, #a9ef77);
+  padding: 10px 14px;
+  min-height: 44px;
+  border-radius: 6px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   transition: color 180ms ease;
 }
 
 .header-back:hover {
-  color: var(--accent);
+  color: #102010;
+  filter: brightness(1.1);
+}
+.case-breadcrumb { flex-wrap: wrap; }
+.case-breadcrumb .case-back-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  margin-right: 12px;
+  border: 0;
+  border-radius: 6px;
+  background: linear-gradient(120deg, #d7ff38, #a9ef77);
+  color: #102010;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+.case-back-button:hover { filter: brightness(1.1); }
+.case-back-button:focus-visible, .header-back:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
 }
 
 .site-header nav a small {
@@ -3037,9 +3062,10 @@ body:has(.home-page--editorial) .home-video-card-media {
   }
 
   .header-back {
-    right: 84px;
-    bottom: 17px;
-    font-size: 10px;
+    position: static;
+    margin-top: 10px;
+    font-size: 12px;
+    grid-column: 1 / -1;
   }
 
   .site-header nav a small {

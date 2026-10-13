@@ -6,6 +6,7 @@ import { FadeIn } from '@/components/fade-in';
 import { CreativeProduction } from '@/components/creative-production';
 import { MediaBlock } from '@/components/media-block';
 import { MediaLightbox } from '@/components/media-lightbox';
+import { BackLink } from '@/components/back-link';
 import { projects as staticProjects, type Project, type ProjectMetric } from '@/data/projects';
 import { getPublishedContent } from '@/lib/portfolio-store';
 import { siteUrl } from '@/lib/site';
@@ -72,6 +73,7 @@ function EditorialArchivePage({ project }: { project: Project }) {
       <article className={`case-project case-project--${project.slug} case-project--editorial-archive`}>
         <header className="editorial-archive-header shell">
           <div className="case-breadcrumb">
+            <BackLink className="case-back-button" />
             <a href="/work">项目库</a>
             <span>/</span>
             <span>{project.category}</span>
@@ -150,6 +152,7 @@ export default async function ProjectPage({
           <article className={`case-project case-project--${project.slug}`}>
         <header className="case-overview case-overview--v10 shell">
           <div className="case-breadcrumb">
+            <BackLink className="case-back-button" />
             <a href="/work">项目库</a>
             <span>/</span>
             <span>{project.category}</span>

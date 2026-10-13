@@ -2,6 +2,7 @@
 
 /* oxlint-disable next/no-html-link-for-pages -- Full document navigation is intentional on the hosted runtime. */
 import { usePathname } from 'next/navigation';
+import { BackLink } from './back-link';
 
 const navigation = [
   ['项目', 'Work', '/work'],
@@ -28,11 +29,8 @@ export function SiteHeader() {
           );
         })}
       </nav>
-      {pathname !== '/' && pathname !== '/work' ? (
-        <a className="header-back" href={pathname.startsWith('/work/') ? '/work' : '/'}>
-          <span aria-hidden="true">←</span>
-          <span>返回</span>
-        </a>
+      {pathname !== '/' ? (
+        <BackLink className="header-back" />
       ) : null}
       <a className="header-contact" href="mailto:mtw7747@gmail.com">
         Contact
