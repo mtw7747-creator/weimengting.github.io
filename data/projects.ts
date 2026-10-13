@@ -1232,7 +1232,7 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        src: '/media/yutabang-product-promo.mp4',
+        src: '/media/yutabang-product-promo-720p.mp4',
         type: 'video',
         poster: '/media/yutabang-product-promo-poster.png',
         alt: '钰兔帮产品宣传片',
@@ -1706,7 +1706,7 @@ export const homeShowcaseItems: HomeShowcaseItem[] = [
 
 export const videoShowcaseItems: HomeShowcaseItem[] = [
   showcaseItem('brand-product-films', {
-    src: '/media/yutabang-product-promo.mp4',
+    src: '/media/yutabang-product-promo-720p.mp4',
     type: 'video',
     poster: '/media/yutabang-product-promo-poster.png',
     label: '企业产品宣传',
